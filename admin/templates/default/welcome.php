@@ -21,22 +21,6 @@
         </ul>
       </dd>
     </dl>
-    <dl class="shop">
-      <dt>
-        <div class="ico"><i></i><sub title="<?php echo $lang['dashboard_wel_count_store_add'];?>"><span><em id="statistics_store"></em></span></sub></div>
-        <h3><?php echo $lang['nc_store'];?></h3>
-        <h5><?php echo $lang['dashboard_wel_store_des'];?></h5>
-      </dt>
-      <dd>
-        <ul>
-          <li class="w20pre none"><a href="index.php?act=store&op=store_joinin">开店审核<sub><em id="statistics_store_joinin">0</em></sub></a></li>
-          <li class="w20pre none"><a href="index.php?act=store&op=store_bind_class_applay_list&state=0">类目申请<sub><em id="statistics_store_bind_class_applay">0</em></sub></a></li>
-          <li class="w20pre none"><a href="index.php?act=store&op=reopen_list&re_state=1">续签申请<sub><em id="statistics_store_reopen_applay">0</em></sub></a></li>
-          <li class="w20pre none"><a href="index.php?act=store&op=store&store_type=expired"><?php echo $lang['dashboard_wel_expired'];?><sub><em id="statistics_store_expired">0</em></sub></a></li>
-          <li class="w20pre none"><a href="index.php?act=store&op=store&store_type=expire"><?php echo $lang['dashboard_wel_expire'];?><sub><em id="statistics_store_expire">0</em></sub></a></li>
-        </ul>
-      </dd>
-    </dl>
     <dl class="goods">
       <dt>
         <div class="ico"><i></i><sub title="<?php echo $lang['dashboard_wel_total_goods'];?>"><span><em id="statistics_goods"></em></span></sub></div>
@@ -86,61 +70,13 @@
       </dd>
     </dl>
 
-    <?php if (C('cms_isuse') != null) {?>
-    <dl class="cms">
-      <dt>
-        <div class="ico"><i></i></div>
-        <h3>CMS</h3>
-        <h5>资讯文章/图片画报/会员评论</h5>
-      </dt>
-      <dd>
-        <ul>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('cms_article', 'cms_article_list_verify');?>">文章审核<sub><em id="statistics_cms_article_verify">0</em></sub></a></li>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('cms_picture', 'cms_picture_list_verify');?>">画报审核<sub><em id="statistics_cms_picture_verify">0</em></sub></a></li>
-          <li class="w34pre none"><a href="<?php echo urlAdmin('cms_comment', 'comment_manage');?>">评论<sub></sub></a></li>
-        </ul>
-      </dd>
-    </dl>
-    <?php }?>
-    <?php if (C('circle_isuse') != null) {?>
-    <dl class="circle">
-      <dt>
-        <div class="ico"><i></i></div>
-        <h3>圈子</h3>
-        <h5>申请开通/圈内话题及举报</h5>
-      </dt>
-      <dd>
-        <ul>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('circle_manage', 'circle_verify');?>">圈子申请<sub><em id="statistics_circle_verify">0</em></sub></a></li>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('circle_theme', 'theme_list');?>">话题</a></li>
-          <li class="w34pre none"><a href="<?php echo urlAdmin('circle_inform', 'inform_list');?>">举报</a></li>
-        </ul>
-      </dd>
-    </dl>
-    <?php }?>
-    <?php if (C('microshop_isuse') != null){?>
-    <dl class="microshop">
-      <dt>
-        <div class="ico"><i></i></div>
-        <h3>微商城</h3>
-        <h5>随心看/个人秀/店铺街</h5>
-      </dt>
-      <dd>
-        <ul>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('microshop', 'goods_manage');?>">随心看</a></li>
-          <li class="w33pre none"><a href="<?php echo urlAdmin('circle_theme', 'theme_list');?>">个人秀</a></li>
-          <li class="w34pre none"><a href="<?php echo urlAdmin('circle_inform', 'inform_list');?>">店铺街</a></li>
-        </ul>
-      </dd>
-    </dl>
-    <?php }?>
     <dl class="system">
       <dt>
         <div class="ico"><i></i></div>
         <h3><?php echo $lang['dashboard_welcome_sys_info'];?></h3>
         <div id="system-info">
           <ul>
-            <li>ShopNC <?php echo $lang['dashboard_welcome_version'];?><span><?php echo $output['statistics']['shop_version'];?></span></li>
+            <li>ShopNC-Minion <?php echo $lang['dashboard_welcome_version'];?><span><?php echo $output['statistics']['shop_version'];?></span></li>
             <li><?php echo $lang['dashboard_welcome_install_date'];?><span><?php echo $output['statistics']['setup_date'];?></span></li>
             <li><?php echo $lang['dashboard_welcome_server_os'];?><span><?php echo $output['statistics']['os'];?></span></li>
             <li>WEB <?php echo $lang['dashboard_welcome_server'];?><span><?php echo $output['statistics']['web_server'];?></span></li>

@@ -271,9 +271,9 @@ function addFavorite(url, title) {
         <div > </div></td>
     </tr>
     <tr>
-      <td class="menutd" valign="top" width="161"><div id="mainMenu" class="main-menu">
-          <?php echo $output['left_nav'];?>
-        </div><div class="copyright"></div></td>
+		<td class="menutd" valign="top" width="161">
+			<div id="mainMenu" class="main-menu"><?php echo $output['left_nav'];?></div>
+		</td>
       <td valign="top" width="100%"><iframe src="" id="workspace" name="workspace" style="overflow: visible;" frameborder="0" width="100%" height="100%" scrolling="yes" onload="window.parent"></iframe></td>
     </tr>
   </tbody>

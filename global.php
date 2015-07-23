@@ -28,13 +28,11 @@ define('InShopNC',true);
 define('StartTime',microtime(true));
 define('TIMESTAMP',time());
 define('DIR_SHOP','shop');
-define('DIR_CMS','cms');
-define('DIR_CIRCLE','circle');
+
 define('DIR_MICROSHOP','microshop');
 define('DIR_ADMIN','admin');
 define('DIR_API','api');
 define('DIR_MOBILE','mobile');
-define('DIR_WAP','wap');
 
 define('DIR_RESOURCE','data/resource');
 define('DIR_UPLOAD','data/upload');

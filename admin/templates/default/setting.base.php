@@ -133,26 +133,6 @@
           <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['set_sys_use_time_zone'];?>+8</span></td>
         </tr> 
 		<tr>
-          <td colspan="2" class="required"><label for="site_phone"><?php echo $lang['site_shares'];?>:</label></td>
-        </tr>
-        <tr class="noborder">
-          <td class="vatop"><input id="site_shares" name="site_shares" value="<?php echo $output['list_setting']['site_shares'];?>" class="txt" type="text" />%</td>
-          <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['site_shares_tips'];?></span></td>
-        </tr>
-		<tr>
-          <td colspan="2" class="required"><label for="tax_status"><?php echo $lang['tax_status'];?>：</label></td>
-        </tr>
-		<tr> 
-		<td class="vatop rowform onoff"<label for="site_tax">
-		  <label for="tax_status1" class="cb-enable <?php if($output['list_setting']['tax_status'] == '1'){ ?>selected<?php } ?>" ><span><?php echo $lang['open'];?></span></label>
-            <label for="tax_status0" class="cb-disable <?php if($output['list_setting']['tax_status'] == '0'){ ?>selected<?php } ?>" ><span><?php echo $lang['close'];?></span></label>
-            <input id="tax_status1" name="tax_status" <?php if($output['list_setting']['tax_status'] == '1'){ ?>checked="checked"<?php } ?>  value="1" type="radio">
-            <input id="tax_status0" name="tax_status" <?php if($output['list_setting']['tax_status'] == '0'){ ?>checked="checked"<?php } ?> value="0" type="radio">
-			&nbsp;&nbsp;<?php echo $lang['site_tax'];?></label> <input id="limit_tax" name="limit_tax" size="5" value="<?php echo $output['list_setting']['limit_tax'];?>" type="text" />元
-		 </td>
-		 <td class="vatop tips"><span class="vatop rowform"><?php echo $lang['shipping_tax_notice'];?></span></td>
-        </tr>
-		<tr>
           <td colspan="2" class="required">会员注册开关:</td>
         </tr>
         <tr class="noborder">

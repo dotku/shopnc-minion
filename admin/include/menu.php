@@ -70,7 +70,6 @@ $arr = array(
 					array('args'=>'perform,perform,setting',		'text'=>$lang['nc_admin_perform_opt']),
 					array('args'=>'search,search,setting',			'text'=>$lang['nc_admin_search_set']),
 					array('args'=>'list,admin_log,setting',			'text'=>$lang['nc_admin_log']),
-					array('args'=>'db,db,setting',			        'text'=>'数据备份'),
 					array('args'=>'sale_area,setting,setting',			        'text'=>$lang['sale_area']),
 				)
 			),
@@ -187,23 +186,7 @@ $arr = array(
 			),
 		),
 );
-if(C('mobile_isuse')){
-	$arr['top'][] = array(
-				'args'	=> 'mobile',
-				'text'	=> $lang['nc_mobile']);
-	$arr['left'][] = array(
-				'nav' => 'mobile',
-				'text' => $lang['nc_mobile'],
-				'list' => array(
-					array('args'=>'index_edit,mb_special,mobile',				'text'=>'首页编辑'),
-					array('args'=>'special_list,mb_special,mobile',				'text'=>'专题设置'),
-					array('args'=>'mb_category_list,mb_category,mobile',		'text'=>$lang['nc_mobile_catepic']),
-					array('args'=>'mb_app,mb_app,mobile',						'text'=>'下载设置'),
-                    array('args'=>'flist,mb_feedback,mobile',					'text'=>$lang['nc_mobile_feedback']),
-					array('args'=>'mb_payment,mb_payment,mobile',				'text'=>'手机支付'),
-				)
-			);
-}
+
 if(C('microshop_isuse') !== null){
 	$arr['top'][] = array(
 				'args'	=> 'microshop',
@@ -243,27 +226,6 @@ if(C('cms_isuse') !== null){
                     9 => array('args'=>'comment_manage,cms_comment,cms','text'=>$lang['nc_cms_comment_manage']),
 				)
 			);
-}
-
-if(C('circle_isuse') !== null){
-	$arr['top'][] = array(
-			'args'	=> 'circle',
-			'text'	=> $lang['nc_circle']);
-	$arr['left'][] = array(
-			'nav'	=> 'circle',
-			'text'	=> $lang['nc_circle'],
-			'list'	=> array(
-					0 => array('args'=>'index,circle_setting,circle','text'=>$lang['nc_circle_setting']),
-					1 => array('args'=>'index,circle_memberlevel,circle','text'=>$lang['nc_circle_memberlevel']),
-					2 => array('args'=>'class_list,circle_class,circle','text'=>$lang['nc_circle_classmanage']),
-					3 => array('args'=>'circle_list,circle_manage,circle','text'=>$lang['nc_circle_manage']),
-					4 => array('args'=>'theme_list,circle_theme,circle','text'=>$lang['nc_circle_thememanage']),
-					5 => array('args'=>'member_list,circle_member,circle','text'=>$lang['nc_circle_membermanage']),
-					6 => array('args'=>'inform_list,circle_inform,circle','text'=>$lang['nc_circle_informnamage']),
-					7 => array('args'=>'adv_manage,circle_setting,circle','text'=>$lang['nc_circle_advmanage']),
-					8 => array('args'=>'index,circle_cache,circle','text'=>$lang['nc_circle_cache'])
-			)
-	);
 }
 
 return $arr;
