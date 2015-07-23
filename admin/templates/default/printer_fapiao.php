@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<?php defined('InShopNC') or exit('Access Invalid!');?>
+<link href="../shop/templates/default/css/pinter.css" rel="stylesheet" type="text/css"/>
+<style>
+body table {
+	border:0px; margin:0 auto; text-align:center; font-size:12px;
+}
+td {
+	font-family:"微软雅黑","宋体", Arial, Helvetica, sans-serif; color:#000;
+}
+</style>
+<title>发票打印</title>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<?php
+$r=explode("|",$output['order_id']);
+		foreach ($r as $order_id){
+		 if ($order_id <= 0){
+			exit;
+		     }
+        $model_order = Model('order');
+		$order_info	= $model_order->getOrderInfo(array('order_id'=>$order_id),array('order_goods','order_common','store'));
+		if (!empty($order_info['extend_order_common']['daddress_id'])) {
+		    $daddress_info = Model('daddress')->getAddressInfo(array('address_id'=>$order_info['extend_order_common']['daddress_id']));
+		   
+		}
+?>
+
+<div class="print-layout">
+<table id="__01" width="800" height="926" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td width="320" height="60" align="left" valign="middle">
+		  <img src="<?php echo UPLOAD_SITE_URL.DS.ATTACH_COMMON.DS.$output['setting_config']['site_logo']; ?>" height="60"></td>
+		<td width="480" height="60" align="left" valign="baseline"><h1>www.ebuybbs.com</td>
+		
+		
+        
+	</tr>
+ 
+	<tr>
+		<td height="66" colspan="2" align="left">
+		  <table width="100%" border="0">
+		    <tr>
+		      <td width="54%" height="50">
+			  <?php if (!empty($order_info['order_sn'])){?>
+			  <img src="../ID_image/ebuyda_order1D.php?text=<?php echo $order_info ['order_sn'];?>" alt="barcode" height="70"/>
+			  <?php }?>
+			  </td>
+		      <td width="46%" valign="bottom">System Number：<?php echo $order_info ['order_sn'];?></td>
+	        </tr>
+        </table></td>
+  </tr>
+
+	<tr>
+	  <td height="90" colspan="5"><table width="100%" height="80" border="0"style="border:1px solid #000;  padding:10px 0;">
+	   
+		<tr>
+		  <td width="35%" align="left">To：<?php echo $order_info['extend_order_common']['reciver_name'];?></td>
+	      <td width="35%" align="left">Celphoner:<?php echo $order_info['extend_order_common']['reciver_info']['phone'];?></td>
+	      <td width="30%" align="left"><?php if (!empty($output['yundaexorder']['yundaex_order_systemnumber'])){;?>
+              <span>Tracking Number：<?php echo $output['yundaexorder']['yundaex_order_systemnumber'];?></span>
+              <?php }?></td>
+        </tr>
+	    <tr>
+	      <td align="left">Order time：<?php echo @date('Y-m-d',$output['order_info']['add_time']);?></td>
+	      <td align="left">Address：<?php echo $order_info['extend_order_common']['reciver_info']['address'];?></td>
+	     
+        </tr>
+	   
+      </table></td>
+  </tr>
+	<tr>
+		<td height="305" colspan="5" valign="top" style="border-top:1px solid #000; border-bottom:1px solid #000; padding:10px 0;">
+        	<table style="text-align:center; border:1px solid #000;" width="100%" height="332" border="0">
+   <tr>
+    <td height="380" colspan="3" valign="top">
+   <table width="100%">
+ <tr align="center">
+    <td width="56" height="35"><strong>Serial Number</strong></td>
+    <td height="35"><strong>Name</strong></td>
+    <td width="43" height="35"><strong>Quantity</strong></td>
+    <td width="100" height="35"><strong>Unit Price</strong></td>
+    <td width="121" height="35"><strong>Subtotal</strong></td>
+	<?php if ($GLOBALS['setting_config']['tax_status']==5){?>
+    <td width="121"><strong>Estimate Customs Duty</strong></td>
+	<?php }?>
+  </tr>
+   <?php if (!empty($order_info['order_id'])){?>
+ <?php $t=0;foreach($order_info['extend_order_goods'] as  $k=>$v){?>
+ 
+  <tr align="center" >
+    <td height="30"><?php echo $k+1;?></td>
+    <td align="left"><?php echo $v['goods_name'];?></td>
+    <td><?php echo $v['goods_num'];?></td>
+    <td><?php echo $lang['currency'].$v['goods_price'];?></td>
+    <td><?php echo $lang['currency'].($v['goods_price']*$v['goods_num']);?></td>
+	<?php if ($GLOBALS['setting_config']['tax_status']==5){
+	$model_goods = Model('goods');
+	$rate = $model_goods->getGoodstaxrate($v['gc_id']);?>
+    <td><?php echo $lang['currency'].(round($v['goods_price']*$v['goods_num']*$rate['tax_rate'],2));?></td>
+	<?php }?>
+  </tr>
+  
+   <?php $t=$t+$v['goods_num'];}?>
+	 <tr align="center">
+    <td height="50">&nbsp;</td>
+    <td align="left">&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+     <tr align="center">
+    <td height="30"></td>
+    <td align="right">Total Quantity:</td>
+    <td><?php echo $t;?></td>
+    <td></td>
+    <td><?php echo $lang['currency'].$order_info['goods_amount'];?></td>
+	<?php if ($GLOBALS['setting_config']['tax_status']==5){?>
+    <td><?php echo $lang['currency'].$tax;?></td>
+	 <?php }?> <?php }?>
+  </tr>
+  </table >
+ 
+    </td>
+    </tr>
+    
+    
+</table>
+	  </td>
+  </tr>
+    
+	<tr>
+		<td height="122" colspan="5" rowspan="1" style="padding-top:10px;"><table width="100%" height="100%" border="0">
+		  <tr>
+		    <td width="70%" ><table width="100%" height="186" border="0" style="text-align:center; border:1px solid #000;">
+		      <tr>
+		        <td width="3%" >&nbsp;</td>
+		        <td width="32%" height="45" align="left" >Customer Service Number：&nbsp; <?php echo $store_info['store_tel'];?></td>
+		        <td width="100%" align="left" >Address：&nbsp;<?php echo $daddress_info['area_info'];?>&nbsp;<?php echo $daddress_info['address'];?>&nbsp;<?php echo $daddress_info['company'];?></td>
+		        </tr>
+		      <tr>
+		        <td></td>
+		        <td height="141" colspan="2"><?php if (!empty($yundaexorder['yundaex_order_systemnumber'])){;?><strong>Tracking Number</strong><br/><img src="../ID_image/ebuyda_order1D.php?text=<?php echo $yundaexorder['yundaex_order_systemnumber'];?>" alt="barcode" height="60" /><?php }else{?>Tracking information not yet available<?php }?>[<?php echo $order_info['extend_order_common']['daddress_id'];?>]</td>
+		        </tr>
+	        </table></td>
+		   <td width="1%" ></td>
+		    <td width="29%" ><table width="100%" border="0" height="200" style="text-align:center; border:1px solid #000;">
+			 <tr>
+		              <td height="105"><table width="100%" border="0">
+		                <tr>
+		                  <td width="30%" align="right">Subtotal：</td>
+		                  <td width="100%" align="left">&nbsp;<?php echo $lang['currency'].$order_info['goods_amount'];?></td>
+		                  </tr>
+						 <?php if ($GLOBALS['setting_config']['tax_status']==5){?>
+		                <tr>
+		                  <td align="right">Prepaid Customs Duty：</td>
+		                  <td align="left">&nbsp;<?php echo $lang['currency'].$order_info['tax_fee'];?></td>
+		                  </tr>
+						  <?php }?>
+		                <tr>
+		                  <td align="right">Shipping：</td>
+		                  <td align="left">&nbsp;<?php echo $lang['currency'].$order_info['shipping_fee'];?></td>
+		                  </tr>
+						   <tr>
+		                  <td align="right">Discount：</td>
+		                  <td align="left">&nbsp;<?php if ($GLOBALS['setting_config']['tax_status']==1){ $s = $order_info['tax_fee'];}else{$s=0;} $T= $order_info['order_amount']-($goods_totleprice + $s); echo $lang['currency'].$T;?></td>
+		                  </tr>
+		                </table></td>
+	                </tr>
+		            <tr>
+		              <td height="56"><table style="text-align:left; border-top:1px solid #000;" width="100%" height="100%" border="0">
+		                <tr>
+		                  <td width="80" align="right"><h3>Total：</h3></td>
+		                  <td align="left"><h3><?php echo $lang['currency'].$order_info['order_amount'];?></h3>
+						  </td>
+		                  </tr>
+		                </table></td>
+	                </tr>
+		     
+	        </table></td>
+	      </tr>
+      </table></td>
+		
+  </tr>
+            
+ 
+	
+	
+	
+		<tr>
+		  <td height="80" colspan="3" align="center">2014 Goodsuper. All rights reserved.Refer to website for all terms and conditions.mall </td>
+  </tr>
+		  <td colspan="3" align="center" valign="top" style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #666; padding:0px 0px 0px 30px;">●●●Thank you for shopping with us●●●
+	      </td>
+	</tr>
+	
+</table>
+</div>
+ <?php }?>
+<div class="print-layout">
+输入错误或找不到此订单: <?php echo $order_cn ;?>
+</div>
+ 
+
+</body>
+</html>

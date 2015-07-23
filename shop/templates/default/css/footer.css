@@ -1,0 +1,99 @@
+#footer{
+	width:100%;
+	padding-bottom: 0px; /*remove footer padding from base.css*/
+	font-family:"微软雅黑", Arial, sans-serif;
+}
+#footer .ribbon{
+	height:50px;
+	background:#e60012;
+}
+#footer .ribbon .ribbon_art{
+	width:1180px;
+	position:relative;
+	margin:0 auto;
+}
+#footer .ribbon .ribbon_art a{
+	color: #fff;
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    padding: 0 90px;
+}
+#footer .ribbon .ribbon_art span{
+	color: #fff;
+    float: left;
+    font-size: 18px;
+    height: 50px;
+    line-height: 50px;
+    width: 295px;
+	text-align: center;
+}
+#footer .help_wrap{
+	position:relative;
+	width:100%;
+	background:#333;
+	float:left;
+	padding-bottom:30px;
+	text-align:left;
+}
+#footer .help_wrap .help{
+	width:1180px;
+	position:relative;
+	margin:0 auto;
+	padding-top:35px;
+}
+#footer .help_wrap .help dl{
+	width:160px;
+	float:left;
+	padding-left:36px;
+}
+
+#footer .help_wrap .help dl dt{
+	font-size:16px;
+	font-weight:bold;
+	color:#fff;
+	display:block;
+}
+
+#footer .help_wrap .help dl dd{
+	font-size:12px;
+	text-align:left;
+	margin-top:10px;
+}
+
+#footer .help_wrap .help dl dd a{
+	color: #fff;
+    display: block;
+    height: 24px;
+    line-height: 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+}
+#footer .bot_nav_wrap{
+	position:relative;
+	width:100%;
+	float:left;
+	background-color: #F3F3F3;
+}
+#footer .bot_nav_wrap .bot_nav{
+	width:1180px;
+	position:relative;
+	margin:0 auto;
+	padding-top:20px;
+	padding-bottom:20px;
+	text-align:center;
+	border-bottom:1px solid #ccc;
+}
+#footer .bot_nav_wrap .bot_nav a{
+	padding:15px;
+	font-size:12px;
+}
+#footer .bot_nav_wrap .cprt{
+	text-align:center;
+	margin:15px;
+	line-height:24px;
+	color:#666;
+}

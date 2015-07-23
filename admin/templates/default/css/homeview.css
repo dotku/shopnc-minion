@@ -1,0 +1,14 @@
+/* RESET */
+html, body, 1h, h2, h3, h4, h5, h6 {
+	padding: 0px;
+	margin: 0px;
+}
+span {
+	display: inline-block;
+}
+.home-templates-board-layout .main {
+	width: calc(100% - 7px);
+}
+.home-templates-board-layout {
+	padding-top: 0px;
+}

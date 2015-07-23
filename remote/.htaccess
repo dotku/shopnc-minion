@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule . input.php [NC]

@@ -1,0 +1,4 @@
+/* 用于后台编辑页面的风格优化 */
+.home-templates-board-layout dl dd {
+	background-color: #eee;
+}
