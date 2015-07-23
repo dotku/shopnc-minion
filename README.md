@@ -1,4 +1,4 @@
-# ShopNC-B2B2C
-version: 20150302
+# ShopNC-minion
+version: 20150723
 
-new add line
+the goal is to create a shop for personal usage
