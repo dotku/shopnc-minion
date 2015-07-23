@@ -1,7 +1,3 @@
 # Ignore
-.gitignore
-data/*
 
 # but not these files ...
-!admin/*
-
