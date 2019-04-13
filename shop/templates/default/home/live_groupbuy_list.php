@@ -31,19 +31,19 @@
   <div class="ncg-content">
     <div class="ncg-nav">
       <ul>
-        <li <?php if($output['type']=='immediate'){ echo 'class="current"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&class_id=<?php echo $_GET['class_id']?>&s_class_id=<?php echo $_GET['s_class_id'];?>&area_id=<?php echo $_GET['area_id'];?>&mall_id=<?php echo $_GET['mall_id'];?>&dis=<?php echo $_GET['dis'];?>&order=<?php echo $_GET['order']?>&sort=<?php echo $_GET['sort'];?>">正在进行</a></li>
-        <li <?php if($output['type']=='soon'){ echo 'class="current"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&class_id=<?php echo $_GET['class_id']?>&s_class_id=<?php echo $_GET['s_class_id'];?>&area_id=<?php echo $_GET['area_id'];?>&mall_id=<?php echo $_GET['mall_id'];?>&dis=<?php echo $_GET['dis'];?>&order=<?php echo $_GET['order']?>&sort=<?php echo $_GET['sort'];?>&type=soon">即将开始</a></li>
-        <li <?php if($output['type']=='end'){ echo 'class="current"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&class_id=<?php echo $_GET['class_id']?>&s_class_id=<?php echo $_GET['s_class_id'];?>&area_id=<?php echo $_GET['area_id'];?>&mall_id=<?php echo $_GET['mall_id'];?>&dis=<?php echo $_GET['dis'];?>&order=<?php echo $_GET['order']?>&sort=<?php echo $_GET['sort'];?>&type=end">已经结束</a></li>
+        <li <?php if($output['type']=='immediate'){ echo 'class="current"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&class_id=<?php echo htmlspecialchars($_GET['class_id'])?>&s_class_id=<?php echo htmlspecialchars($_GET['s_class_id']);?>&area_id=<?php echo htmlspecialchars($_GET['area_id']);?>&mall_id=<?php echo htmlspecialchars($_GET['mall_id']);?>&dis=<?php echo htmlspecialchars($_GET['dis']);?>&order=<?php echo htmlspecialchars($_GET['order'])?>&sort=<?php echo htmlspecialchars($_GET['sort']);?>">正在进行</a></li>
+        <li <?php if($output['type']=='soon'){ echo 'class="current"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&class_id=<?php echo htmlspecialchars($_GET['class_id'])?>&s_class_id=<?php echo htmlspecialchars($_GET['s_class_id']);?>&area_id=<?php echo $_GET['area_id'];?>&mall_id=<?php echo $_GET['mall_id'];?>&dis=<?php echo $_GET['dis'];?>&order=<?php echo $_GET['order']?>&sort=<?php echo $_GET['sort'];?>&type=soon">即将开始</a></li>
+        <li <?php if($output['type']=='end'){ echo 'class="current"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&class_id=<?php echo htmlspecialchars($_GET['class_id'])?>&s_class_id=<?php echo htmlspecialchars($_GET['s_class_id']);?>&area_id=<?php echo $_GET['area_id'];?>&mall_id=<?php echo $_GET['mall_id'];?>&dis=<?php echo $_GET['dis'];?>&order=<?php echo $_GET['order']?>&sort=<?php echo $_GET['sort'];?>&type=end">已经结束</a></li>
       </ul>
     </div>
     <div class="ncg-screen"> 
       <!-- 分类过滤列表 -->
       <dl>
         <dt><?php echo $lang['text_class'];?>：</dt>
-        <dd <?php if(empty($_GET['class_id'])){ echo 'class="selected"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&area_id=<?php echo $_GET['area_id'];?>&mall_id=<?php echo $_GET['mall_id'];?>&dis=<?php echo $_GET['dis'];?>&order=<?php echo $_GET['order']?>&sort=<?php echo $_GET['sort'];?>&type=<?php echo $_GET['type'];?>">全部</a></dd>
+        <dd <?php if(empty($_GET['class_id'])){ echo 'class="selected"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&area_id=<?php echo htmlspecialchars($_GET['area_id']);?>&mall_id=<?php echo htmlspecialchars($_GET['mall_id']);?>&dis=<?php echo $_GET['dis'];?>&order=<?php echo $_GET['order']?>&sort=<?php echo $_GET['sort'];?>&type=<?php echo $_GET['type'];?>">全部</a></dd>
         <?php if(is_array($output['class_root'])) { ?>
         <?php foreach($output['class_root'] as $groupbuy_class) { ?>
-        <dd <?php if($_GET['class_id']==$groupbuy_class['live_class_id']){ echo 'class="selected"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&class_id=<?php echo $groupbuy_class['live_class_id'];?>&area_id=<?php echo $_GET['area_id'];?>&mall_id=<?php echo $_GET['mall_id'];?>&dis=<?php echo $_GET['dis'];?>&order=<?php echo $_GET['order']?>&sort=<?php echo $_GET['sort'];?>&type=<?php echo $output['type'];?>"><?php echo $groupbuy_class['live_class_name'];?></a> </dd>
+        <dd <?php if($_GET['class_id']==$groupbuy_class['live_class_id']){ echo 'class="selected"';}?>><a href="index.php?act=show_live_groupbuy&op=live_groupbuy_list&class_id=<?php echo $groupbuy_class['live_class_id'];?>&area_id=<?php echo htmlspecialchars($_GET['area_id']);?>&mall_id=<?php echo $_GET['mall_id'];?>&dis=<?php echo $_GET['dis'];?>&order=<?php echo $_GET['order']?>&sort=<?php echo $_GET['sort'];?>&type=<?php echo $output['type'];?>"><?php echo $groupbuy_class['live_class_name'];?></a> </dd>
         <?php } ?>
         <?php } ?>
         <?php if(isset($output['class_id'])){?>
